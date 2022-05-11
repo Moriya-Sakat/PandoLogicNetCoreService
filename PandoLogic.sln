@@ -1,6 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandoLogic", "PandoLogic.csproj", "{BF4E1ADF-5147-484D-A5B3-012A9FEAC01C}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PandoLogic", "PandoLogic.csproj", "{BF4E1ADF-5147-484D-A5B3-012A9FEAC01C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandoLogicTests", "..\PandoLogicTests\PandoLogicTests.csproj", "{CFAC0324-9C86-45E0-B64D-2B05DBCF1B44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +17,15 @@ Global
 		{BF4E1ADF-5147-484D-A5B3-012A9FEAC01C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF4E1ADF-5147-484D-A5B3-012A9FEAC01C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF4E1ADF-5147-484D-A5B3-012A9FEAC01C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFAC0324-9C86-45E0-B64D-2B05DBCF1B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFAC0324-9C86-45E0-B64D-2B05DBCF1B44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFAC0324-9C86-45E0-B64D-2B05DBCF1B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFAC0324-9C86-45E0-B64D-2B05DBCF1B44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AAAC8235-65A6-4A5E-A503-D704E7E2CE7A}
 	EndGlobalSection
 EndGlobal

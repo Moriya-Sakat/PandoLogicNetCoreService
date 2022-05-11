@@ -1,34 +1,28 @@
-using Microsoft.AspNetCore.Authorization;
+using JsonApiDotNetCore.Controllers.Annotations;
 using Microsoft.AspNetCore.Mvc;
+using PandoLogic.Services;
 
 namespace PandoLogic.Controllers;
 
-[Authorize]
 [ApiController]
-[Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+[ApiExplorerSettings(IgnoreApi = true)]
+[DisableRoutingConvention, Route("api/jobs-views")]
+public class JobViewsController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+    private readonly IJobViewsMetaDataService _jobViewsMetaDataService;
 
-    private readonly ILogger<WeatherForecastController> _logger;
+    public JobViewsController(IJobViewsMetaDataService jobViewsMetaDataService) => _jobViewsMetaDataService = jobViewsMetaDataService;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    [HttpGet("GetMetaData")]
+    public IActionResult GetAsync([FromQuery]DateTime startDate, [FromQuery]DateTime endDate, CancellationToken cancellationToken)
     {
-        _logger = logger;
-    }
+        if (startDate >= endDate)
+        {
+            return BadRequest("Incorrect date rage");
+        }
 
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
-    {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+        var data = _jobViewsMetaDataService.GetMetaData(startDate, endDate, cancellationToken);
+        
+        return Ok(data);
     }
 }
