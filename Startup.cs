@@ -1,8 +1,6 @@
-﻿using JsonApiDotNetCore.Configuration;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using PandoLogic.Data;
-using PandoLogic.Resources;
 using PandoLogic.Services;
 
 namespace PandoLogic;
@@ -30,12 +28,6 @@ public class Startup
                 static dbContextOptions => dbContextOptions.EnableRetryOnFailure(3)));
         
         services.AddScoped<IJobViewsMetaDataService, JobViewsMetaDataService>();
-
-        //services.AddJsonApi<JobViewsContext>(
-        //resources: resources =>
-        //{
-        //   resources.Add<JobViewsMetaDataResource>();
-        //});
     }
     
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -43,8 +35,6 @@ public class Startup
         app.UseDeveloperExceptionPage();
         
         app.UseRouting();
-        
-        //app.UseJsonApi();
 
         app.UseEndpoints(endpoints =>
         {
